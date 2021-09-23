@@ -1,7 +1,10 @@
 <?php
 // return all Question fields in JSON format
-function get_questions($request) {
-    return 'Hello World';
+function get_questions($request) {    
+    $quiz_fields = get_fields(14); // quiz page ID is 14 - get_fields() will return all ACF fields for that item
+    $response = new WP_REST_Response($quiz_fields);
+    $response->set_status(200);
+    return $response;
 }
 
 add_action('rest_api_init', function () {
