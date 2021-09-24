@@ -1,0 +1,35 @@
+#app {
+    font-family: var(--font-family);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    margin-top: 60px;
+  }
+  
+  body {
+    background-color: var(--primary-black);
+    color: var(--primary-red);
+  }
+  
+  button {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    height: 35px;
+    line-height: 35px;
+    padding: 0 1.5rem;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    vertical-align: middle;
+    white-space: nowrap;
+    outline: none;
+    border: none;
+    user-select: none;
+    border-radius: 2px;
+    transition: all 0.3s ease-out;
+    min-width: 200px;
+    border-radius: 9px;
+  }

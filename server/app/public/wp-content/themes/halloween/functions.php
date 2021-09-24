@@ -16,7 +16,10 @@ add_action('rest_api_init', function () {
 
 // return all Character fields in JSON format
 function get_characters($request) {
-    return 'Hello World';
+    $character_fields = array(get_fields(21), get_fields(21)); 
+    $response = new WP_REST_Response($character_fields);
+    $response->set_status(200);
+    return $response;
 }
 
 add_action('rest_api_init', function () {
