@@ -2,11 +2,17 @@
   <div>
     <div v-if="quizServiceLoading">Loading...</div>
 
-    <div v-if="quizServiceFailure">Failed to fetch...</div>
+    <div v-if="quizServiceFailure">
+      Unable to contact WordPress API. Please refresh your browser tab.
+    </div>
 
     <transition name="fade">
       <div v-if="quizServiceReady && !quizStarted">
         <h1>What kind of vampire are you?</h1>
+        <p>
+          The Halloween season is almost upon us! Which vampire will you be this
+          year? Try not to get spooked!
+        </p>
         <div>
           <StartButton text="Click Here..." @click="quizStarted = true" />
         </div>
@@ -69,11 +75,12 @@
         </div>
       </div>
 
-      <!-- TODO: move quiz completion screen to its own component. pass down the characters and selected outcome -->
-      <div v-if="quizCompleted">
-        <QuizCompletionScreen :character="selectedCharacter" />
-        <BasicButton text="Play Again?" @click="handleRestart" />
-      </div>
+      <transition name="slide-fade">
+        <div v-if="quizCompleted">
+          <QuizCompletionScreen :character="selectedCharacter" />
+          <BasicButton text="Play Again?" @click="handleRestart" />
+        </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -132,7 +139,6 @@ export default {
       const formattedQuestions = questionKeys.map(
         key => this.questions.data[key],
       );
-      console.log(formattedQuestions);
       return formattedQuestions;
     },
 
@@ -148,7 +154,6 @@ export default {
         return obj.character_weight === highestWeight;
       });
 
-      console.log('matchedCharacter', matchedCharacter);
       return matchedCharacter;
     },
   },
@@ -201,8 +206,12 @@ export default {
       this.currentQuestionIndex++;
     },
     handleRestart: function() {
-      // TODO: reset state values instead of reloading the page
       window.location.reload();
+
+      // TODO: reset state values instead of reloading the page
+      //   this.currentQuestionIndex = 0;
+      //   this.answerWeights = {};
+      //   this.quizCompleted = false;
     },
   },
 };
@@ -219,6 +228,20 @@ export default {
   opacity: 0;
 }
 
+.slide-fade-enter-active {
+  transition: all 0.7s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(20px);
+  opacity: 0;
+}
+
 .dark-label {
   border: 2px solid #d81639;
   padding: 2px 4px 2px 2px;
@@ -227,6 +250,10 @@ export default {
   cursor: pointer;
   max-width: 200px;
   flex-basis: 50%;
+}
+
+.dark-label:hover {
+  background-color: #d8163929;
 }
 
 .dark-label input {

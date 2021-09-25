@@ -18,7 +18,7 @@ export default {
   background-color: var(--primary-black);
   border: 2px solid var(--primary-red);
   border-radius: 9px;
-  color: #d81639;
+  color: var(--primary-red);
 }
 
 .start-button:hover span {
