@@ -23,5 +23,6 @@ export default {
 .basic-button:hover {
   background-color: var(--primary-blue-green);
   color: var(--primary-black);
+  transform: translateY(3px);
 }
 </style>
