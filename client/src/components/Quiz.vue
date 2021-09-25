@@ -162,7 +162,7 @@ export default {
       const apiUrl =
         window.location.hostname === 'localhost'
           ? 'http://nexthink-quiz-interview.local/wp-json/api'
-          : 'PRODUCTION_WP_URL';
+          : 'http://nexhalloween2.flywheelsites.com/wp-json/api/';
 
       // fetch and store questions
       fetch(`${apiUrl}/get_questions`)
