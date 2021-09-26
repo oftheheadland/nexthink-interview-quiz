@@ -249,8 +249,11 @@ export default {
 </script>
 
 <style scoped>
+/* completely hide inputs - but don't set to 'display: none' which prevents tab key interaction */
 .hidden-input {
   opacity: 0;
+  position: absolute;
+  z-index: -1;
 }
 
 .dark-label {
@@ -295,12 +298,11 @@ input[type='radio']:focus + label {
 }
 
 input[type='radio']:checked + label {
-  color: var(--primary-black);
+  color: var(--primary-white);
   background-color: var(--transparent-red-80);
-  font-weight: bold;
 }
 
 .orange-text {
-  color: var(--primary-orange);
+  color: var(--primary-white);
 }
 </style>

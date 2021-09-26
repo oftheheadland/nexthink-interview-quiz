@@ -34,10 +34,12 @@ img {
 .quote-container {
   max-width: 450px;
   margin: auto;
+  color: var(--primary-white);
 }
 
 .description-container {
   max-width: 600px;
   margin: auto;
+  color: var(--primary-white);
 }
 </style>
