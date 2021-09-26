@@ -15,66 +15,68 @@
         </p>
         <img class="animate-flicker " src="../assets/img/vampire_small.png" />
         <div>
-          <StartButton text="Click Here..." @click="quizStarted = true" />
+          <StartButton text="Click Here..." @click="handleQuizStart" />
         </div>
       </div>
     </transition>
 
     <div v-if="quizStarted">
-      <div v-if="!quizCompleted">
-        <h2>
-          {{ quizQuestionsFormatted[currentQuestionIndex].question_text }}
-        </h2>
+      <transition name="fade">
+        <div v-if="!quizCompleted && quizCurrentlyActive">
+          <h2>
+            {{ quizQuestionsFormatted[currentQuestionIndex].question_text }}
+          </h2>
 
-        <QuizImage
-          :src="quizQuestionsFormatted[currentQuestionIndex].image.url"
-        />
+          <QuizImage
+            :src="quizQuestionsFormatted[currentQuestionIndex].image.url"
+          />
 
-        <div class="choice-container">
-          <label class="dark-label">
-            <input
-              type="radio"
-              v-model="selectedAnswer"
-              :value="quizQuestionsFormatted[currentQuestionIndex].a_weight"
-            />
-            <span>{{ quizQuestionsFormatted[currentQuestionIndex].a }}</span>
-          </label>
+          <div class="choice-container">
+            <label class="dark-label">
+              <input
+                type="radio"
+                v-model="selectedAnswer"
+                :value="quizQuestionsFormatted[currentQuestionIndex].a_weight"
+              />
+              <span>{{ quizQuestionsFormatted[currentQuestionIndex].a }}</span>
+            </label>
 
-          <label class="dark-label">
-            <input
-              type="radio"
-              v-model="selectedAnswer"
-              :value="quizQuestionsFormatted[currentQuestionIndex].b_weight"
-            />
-            <span>{{ quizQuestionsFormatted[currentQuestionIndex].b }}</span>
-          </label>
+            <label class="dark-label">
+              <input
+                type="radio"
+                v-model="selectedAnswer"
+                :value="quizQuestionsFormatted[currentQuestionIndex].b_weight"
+              />
+              <span>{{ quizQuestionsFormatted[currentQuestionIndex].b }}</span>
+            </label>
 
-          <label class="dark-label">
-            <input
-              type="radio"
-              v-model="selectedAnswer"
-              :value="quizQuestionsFormatted[currentQuestionIndex].c_weight"
-            />
-            <span>{{ quizQuestionsFormatted[currentQuestionIndex].c }}</span>
-          </label>
+            <label class="dark-label">
+              <input
+                type="radio"
+                v-model="selectedAnswer"
+                :value="quizQuestionsFormatted[currentQuestionIndex].c_weight"
+              />
+              <span>{{ quizQuestionsFormatted[currentQuestionIndex].c }}</span>
+            </label>
 
-          <label class="dark-label">
-            <input
-              type="radio"
-              v-model="selectedAnswer"
-              :value="quizQuestionsFormatted[currentQuestionIndex].d_weight"
-            />
-            <span>{{ quizQuestionsFormatted[currentQuestionIndex].d }}</span>
-          </label>
+            <label class="dark-label">
+              <input
+                type="radio"
+                v-model="selectedAnswer"
+                :value="quizQuestionsFormatted[currentQuestionIndex].d_weight"
+              />
+              <span>{{ quizQuestionsFormatted[currentQuestionIndex].d }}</span>
+            </label>
+          </div>
+
+          <div v-if="selectedAnswer" class="next-button-container">
+            <BasicButton
+              text="Next Question"
+              @click="handleNextQuestion"
+            ></BasicButton>
+          </div>
         </div>
-
-        <div v-if="selectedAnswer" class="next-button-container">
-          <BasicButton
-            text="Next Question"
-            @click="handleNextQuestion"
-          ></BasicButton>
-        </div>
-      </div>
+      </transition>
 
       <transition name="slide-fade">
         <div v-if="quizCompleted">
@@ -107,6 +109,7 @@ export default {
       currentQuestionIndex: 0,
       quizStarted: false,
       quizCompleted: false,
+      quizCurrentlyActive: false, // used to fade the quiz in and out
     };
   },
   computed: {
@@ -195,16 +198,31 @@ export default {
         : this.answerWeights[this.selectedAnswer]++;
 
       this.selectedAnswer = null;
+      this.quizCurrentlyActive = false;
 
       if (
         this.currentQuestionIndex ===
         this.quizQuestionsFormatted.length - 1
       ) {
-        this.quizCompleted = true;
+        setTimeout(() => {
+          this.quizCompleted = true;
+        }, 500);
+
+        // this.quizStarted = false;
         return;
       }
 
+      setTimeout(() => {
+        this.quizCurrentlyActive = true;
+      }, 500);
+
       this.currentQuestionIndex++;
+    },
+    handleQuizStart: function() {
+      this.quizStarted = true;
+      setTimeout(() => {
+        this.quizCurrentlyActive = true;
+      }, 500);
     },
     handleRestart: function() {
       window.location.reload();
@@ -310,5 +328,6 @@ export default {
   max-width: 300px;
   width: 80%;
   border-radius: 30px;
+  margin-bottom: 1rem;
 }
 </style>

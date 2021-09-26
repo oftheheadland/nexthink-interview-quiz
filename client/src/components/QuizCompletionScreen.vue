@@ -5,7 +5,10 @@
       {{ character.character_source }}!
     </h3>
     <img :src="character.character_image.url" />
-    <p>"{{ character.character_quote }}"</p>
+
+    <div class="quote-container ">
+      <p>"{{ character.character_quote }}"</p>
+    </div>
 
     <div class="description-container">
       <p>{{ character.character_description }}</p>
@@ -25,6 +28,11 @@ export default {
 img {
   max-width: 600px;
   width: 80%;
+}
+
+.quote-container {
+  max-width: 400px;
+  margin: auto;
 }
 
 .description-container {
