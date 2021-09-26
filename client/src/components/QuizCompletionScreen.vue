@@ -1,11 +1,15 @@
 <template>
   <div>
+    <h3>
+      You are {{ character.character_name }} from
+      {{ character.character_source }}!
+    </h3>
     <img :src="character.character_image.url" />
-    <p>
-      You are <strong>{{ character.character_name }}</strong
-      >!
-    </p>
-    <p>{{ character.character_description }}</p>
+    <p>"{{ character.character_quote }}"</p>
+
+    <div class="description-container">
+      <p>{{ character.character_description }}</p>
+    </div>
   </div>
 </template>
 
@@ -19,7 +23,12 @@ export default {
 
 <style scoped>
 img {
-  max-width: 750px;
+  max-width: 600px;
   width: 80%;
+}
+
+.description-container {
+  max-width: 600px;
+  margin: auto;
 }
 </style>

@@ -9,7 +9,7 @@ function get_questions($request) {
 
 // return all Character fields in JSON format
 function get_characters($request) {
-    $character_fields = array(get_fields(21), get_fields(21)); 
+    $character_fields = array(get_fields(77), get_fields(61), get_fields(67), get_fields(58)); 
     $response = new WP_REST_Response($character_fields);
     $response->set_status(200);
     return $response;

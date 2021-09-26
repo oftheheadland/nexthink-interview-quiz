@@ -13,6 +13,7 @@
           The Halloween season is almost upon us! Which vampire will you be this
           year? Try not to get spooked!
         </p>
+        <img class="animate-flicker " src="../assets/img/vampire_small.png" />
         <div>
           <StartButton text="Click Here..." @click="quizStarted = true" />
         </div>
@@ -161,7 +162,7 @@ export default {
     fetchData: function() {
       const apiUrl =
         window.location.hostname === 'localhost'
-          ? 'http://nexthink-quiz-interview.local/wp-json/api'
+          ? 'http://flywheel-nexthink-interview-site.local/wp-json/api'
           : 'https://nexhalloween2.flywheelsites.com/wp-json/api';
 
       // fetch and store questions
@@ -229,7 +230,7 @@ export default {
 }
 
 .slide-fade-enter-active {
-  transition: all 0.7s ease-out;
+  transition: all 0.9s ease-out;
 }
 
 .slide-fade-leave-active {
@@ -250,6 +251,8 @@ export default {
   cursor: pointer;
   max-width: 200px;
   flex-basis: 50%;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .dark-label:hover {
@@ -274,5 +277,56 @@ export default {
   .dark-label {
     flex-basis: 100%;
   }
+}
+
+@keyframes flickerAnimation {
+  0% {
+    opacity: 0.85;
+    border-radius: 50px;
+  }
+  20% {
+    opacity: 0.75;
+    border-radius: 90px;
+  }
+  40% {
+    opacity: 0.9;
+    border-radius: 30px;
+  }
+  60% {
+    opacity: 0.5;
+    border-radius: 100px;
+  }
+  80% {
+    opacity: 0.35;
+    border-radius: 120px;
+  }
+  80% {
+    opacity: 0.75;
+    border-radius: 80px;
+  }
+}
+.animate-flicker {
+  animation: flickerAnimation 4s infinite;
+  max-width: 300px;
+  width: 80%;
+  border-radius: 30px;
+}
+
+.image-cropper {
+  height: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.intro-image {
+  display: block;
+  margin: 0 auto;
+  height: auto;
+  width: 100%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
 }
 </style>

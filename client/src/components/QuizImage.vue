@@ -17,7 +17,7 @@ export default {
   margin-bottom: 1rem;
 }
 .quiz-image-container img {
-  max-width: 750px;
+  max-width: 500px;
   width: 80%;
 }
 
