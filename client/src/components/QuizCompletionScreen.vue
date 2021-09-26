@@ -28,6 +28,7 @@ export default {
 img {
   max-width: 600px;
   width: 80%;
+  height: auto;
 }
 
 .quote-container {

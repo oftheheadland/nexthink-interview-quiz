@@ -16,7 +16,6 @@
     display: inline-block;
     position: relative;
     cursor: pointer;
-    height: 35px;
     line-height: 35px;
     padding: 0 1.5rem;
     font-size: 15px;
@@ -33,5 +32,4 @@
     transition: all 0.3s ease-out;
     min-width: 200px;
     border-radius: 9px;
-    height: 38px;
   }

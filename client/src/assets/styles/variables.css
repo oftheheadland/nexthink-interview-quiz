@@ -6,5 +6,7 @@
     --primary-orange: #e5751f;   
     --primary-blue-green: #55a6ad;
 
-    --transparent-red: #d8163ac9;
+    --transparent-red-80: #d8163ac9;
+    --transparent-red-50:  #d8163a88;
+    --transparent-red-20:  #d8163929;
   }

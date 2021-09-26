@@ -9,7 +9,7 @@
     <transition name="fade">
       <div v-if="quizServiceReady && !quizStarted">
         <h1>Which famous vampire are you?</h1>
-        <p>
+        <p class="orange-text">
           The Halloween season is almost upon us! Which vampire will you be this
           year? Try not to get spooked!
         </p>
@@ -32,39 +32,55 @@
           />
 
           <div class="choice-container">
-            <label class="dark-label">
-              <input
-                type="radio"
-                v-model="selectedAnswer"
-                :value="quizQuestionsFormatted[currentQuestionIndex].a_weight"
-              />
+            <input
+              type="radio"
+              v-model="selectedAnswer"
+              :value="quizQuestionsFormatted[currentQuestionIndex].a_weight"
+              id="choiceA"
+              name="ChoiceA"
+              class="hidden-input"
+              tabindex="1"
+            />
+            <label class="dark-label" for="choiceA">
               <span>{{ quizQuestionsFormatted[currentQuestionIndex].a }}</span>
             </label>
 
-            <label class="dark-label">
-              <input
-                type="radio"
-                v-model="selectedAnswer"
-                :value="quizQuestionsFormatted[currentQuestionIndex].b_weight"
-              />
+            <input
+              type="radio"
+              v-model="selectedAnswer"
+              :value="quizQuestionsFormatted[currentQuestionIndex].b_weight"
+              id="choiceB"
+              name="choiceB"
+              class="hidden-input"
+              tabindex="2"
+            />
+            <label class="dark-label" for="choiceB">
               <span>{{ quizQuestionsFormatted[currentQuestionIndex].b }}</span>
             </label>
 
-            <label class="dark-label">
-              <input
-                type="radio"
-                v-model="selectedAnswer"
-                :value="quizQuestionsFormatted[currentQuestionIndex].c_weight"
-              />
+            <input
+              type="radio"
+              v-model="selectedAnswer"
+              :value="quizQuestionsFormatted[currentQuestionIndex].c_weight"
+              id="choiceC"
+              name="choiceC"
+              class="hidden-input"
+              tabindex="3"
+            />
+            <label class="dark-label" for="choiceC">
               <span>{{ quizQuestionsFormatted[currentQuestionIndex].c }}</span>
             </label>
 
-            <label class="dark-label">
-              <input
-                type="radio"
-                v-model="selectedAnswer"
-                :value="quizQuestionsFormatted[currentQuestionIndex].d_weight"
-              />
+            <input
+              type="radio"
+              v-model="selectedAnswer"
+              :value="quizQuestionsFormatted[currentQuestionIndex].d_weight"
+              id="choiceD"
+              name="choiceD"
+              class="hidden-input"
+              tabindex="4"
+            />
+            <label class="dark-label" for="choiceD">
               <span>{{ quizQuestionsFormatted[currentQuestionIndex].d }}</span>
             </label>
           </div>
@@ -227,35 +243,35 @@ export default {
     },
     handleRestart: function() {
       window.location.reload();
-
-      // TODO: reset state values instead of reloading the page
-      //   this.currentQuestionIndex = 0;
-      //   this.answerWeights = {};
-      //   this.quizCompleted = false;
     },
   },
 };
 </script>
 
 <style scoped>
+.hidden-input {
+  opacity: 0;
+}
+
 .dark-label {
-  border: 2px solid #d81639;
-  padding: 2px 4px 2px 2px;
+  border: 2px solid var(--primary-red);
   border-radius: 3px;
   margin: 5px;
   cursor: pointer;
   max-width: 200px;
   flex-basis: 50%;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  display: flex;
+  justify-content: center;
+  transition: background-color 0.65s ease;
+  padding: 0.75rem;
+}
+
+.dark-label span {
+  margin: auto;
 }
 
 .dark-label:hover {
-  background-color: #d8163929;
-}
-
-.dark-label input {
-  cursor: pointer;
+  background-color: var(--transparent-red-20);
 }
 
 .next-button-container {
@@ -272,5 +288,19 @@ export default {
   .dark-label {
     flex-basis: 100%;
   }
+}
+
+input[type='radio']:focus + label {
+  background-color: var(--transparent-red-20);
+}
+
+input[type='radio']:checked + label {
+  color: var(--primary-black);
+  background-color: var(--transparent-red-80);
+  font-weight: bold;
+}
+
+.orange-text {
+  color: var(--primary-orange);
 }
 </style>
