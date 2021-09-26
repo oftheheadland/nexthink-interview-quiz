@@ -10,9 +10,16 @@
   body {
     background-color: var(--primary-black);
     color: var(--primary-red);
-    overflow: hidden; /* fix an issue where scroll bars appear during Vue animations */
+    /* fix an issue where scroll bars appear during Vue animations */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
   
+  /* fix an issue where scroll bars appear during Vue animations */
+  body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+
   button {
     display: inline-block;
     position: relative;
