@@ -5,12 +5,12 @@
     text-align: center;
     margin-top: 60px;   
     font-size: 20px;
-    overflow: hidden; /* fix an issue where scroll bars appear during Vue animations */
   }
   
   body {
     background-color: var(--primary-black);
     color: var(--primary-red);
+    overflow: hidden; /* fix an issue where scroll bars appear during Vue animations */
   }
   
   button {
