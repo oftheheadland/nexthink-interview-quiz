@@ -274,6 +274,12 @@ export default {
   background-color: var(--transparent-red-20);
 }
 
+@media only screen and (max-width: 600px) {
+  .dark-label {
+    flex-basis: 100%;
+  }
+}
+
 .next-button-container {
   margin-top: 2.5rem;
 }
@@ -282,12 +288,6 @@ export default {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-}
-
-@media only screen and (max-width: 600px) {
-  .dark-label {
-    flex-basis: 100%;
-  }
 }
 
 input[type='radio']:focus + label {
