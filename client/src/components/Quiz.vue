@@ -311,22 +311,4 @@ export default {
   width: 80%;
   border-radius: 30px;
 }
-
-.image-cropper {
-  height: auto;
-  position: relative;
-  overflow: hidden;
-}
-
-.intro-image {
-  display: block;
-  margin: 0 auto;
-  height: auto;
-  width: 100%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
-  border-radius: 50%;
-}
 </style>
