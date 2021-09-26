@@ -31,7 +31,7 @@ img {
 }
 
 .quote-container {
-  max-width: 400px;
+  max-width: 450px;
   margin: auto;
 }
 

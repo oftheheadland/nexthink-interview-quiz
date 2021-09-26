@@ -8,7 +8,7 @@
 
     <transition name="fade">
       <div v-if="quizServiceReady && !quizStarted">
-        <h1>What kind of vampire are you?</h1>
+        <h1>Which famous vampire are you?</h1>
         <p>
           The Halloween season is almost upon us! Which vampire will you be this
           year? Try not to get spooked!
@@ -137,6 +137,7 @@ export default {
       );
     },
 
+    // convert questions data from an object with a property for each question to an array of invdividual question objects
     quizQuestionsFormatted: function() {
       if (!this.quizServiceReady) return [];
       const questionKeys = Object.keys(this.questions.data);
@@ -204,11 +205,10 @@ export default {
         this.currentQuestionIndex ===
         this.quizQuestionsFormatted.length - 1
       ) {
+        // timeout to let quiz fade out animation finish before fading in completion screen
         setTimeout(() => {
           this.quizCompleted = true;
         }, 500);
-
-        // this.quizStarted = false;
         return;
       }
 
@@ -220,6 +220,7 @@ export default {
     },
     handleQuizStart: function() {
       this.quizStarted = true;
+      // timeoout to let quiz intro fade out completely before displaying quiz
       setTimeout(() => {
         this.quizCurrentlyActive = true;
       }, 500);
@@ -237,30 +238,6 @@ export default {
 </script>
 
 <style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-.slide-fade-enter-active {
-  transition: all 0.9s ease-out;
-}
-
-.slide-fade-leave-active {
-  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
-}
-
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  transform: translateX(20px);
-  opacity: 0;
-}
-
 .dark-label {
   border: 2px solid #d81639;
   padding: 2px 4px 2px 2px;
@@ -295,39 +272,5 @@ export default {
   .dark-label {
     flex-basis: 100%;
   }
-}
-
-@keyframes flickerAnimation {
-  0% {
-    opacity: 0.85;
-    border-radius: 50px;
-  }
-  20% {
-    opacity: 0.75;
-    border-radius: 90px;
-  }
-  40% {
-    opacity: 0.9;
-    border-radius: 30px;
-  }
-  60% {
-    opacity: 0.5;
-    border-radius: 100px;
-  }
-  80% {
-    opacity: 0.35;
-    border-radius: 120px;
-  }
-  80% {
-    opacity: 0.75;
-    border-radius: 80px;
-  }
-}
-.animate-flicker {
-  animation: flickerAnimation 4s infinite;
-  max-width: 300px;
-  width: 80%;
-  border-radius: 30px;
-  margin-bottom: 1rem;
 }
 </style>
