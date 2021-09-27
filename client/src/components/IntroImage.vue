@@ -28,7 +28,6 @@ export default { name: 'IntroImage' };
 
 .intro-image-container img {
   position: absolute;
-  max-height: 275px;
   animation-name: fadeInOut;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
