@@ -21,7 +21,7 @@ export default { name: 'IntroImage' };
   height: auto;
   max-width: 400px;
   margin: 0 auto;
-  height: 300px;
+  height: 290px;
   display: flex;
   justify-content: center;
 }
