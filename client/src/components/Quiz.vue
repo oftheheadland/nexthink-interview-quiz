@@ -1,9 +1,11 @@
 <template>
   <div>
-    <div v-if="quizServiceLoading">Loading...</div>
+    <div v-if="quizServiceLoading">
+      <h1>Loading...</h1>
+    </div>
 
     <div v-if="quizServiceFailure">
-      Unable to contact WordPress API. Please refresh your browser tab.
+      <h1>Unable to contact WordPress API. Please refresh your browser tab.</h1>
     </div>
 
     <transition name="fade">
@@ -13,7 +15,14 @@
           The Halloween season is almost upon us! Which vampire will you be this
           year? Try not to get spooked!
         </p>
-        <img class="animate-flicker " src="../assets/img/vampire_small.png" />
+
+        <div class="intro-image-container">
+          <img src="../assets/img/small_vamp.jpg" />
+          <img src="../assets/img/lady_vamp.jpg" />
+          <img src="../assets/img/vampire_small.png" />
+          <img src="../assets/img/bat.jpg" />
+        </div>
+
         <div>
           <StartButton text="Click Here..." @click="handleQuizStart" />
         </div>
@@ -309,5 +318,28 @@ input[type='radio']:checked + label {
 
 .orange-text {
   color: var(--primary-white);
+}
+
+.intro-image-container {
+  position: relative;
+  height: auto;
+  max-width: 400px;
+  margin: 0 auto;
+  position: relative;
+  height: auto;
+  max-width: 400px;
+  margin: 0 auto;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.intro-image-container img {
+  position: absolute;
+  max-height: 275px;
+  animation-name: fadeInOut;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 8s;
 }
 </style>
