@@ -33,5 +33,8 @@ export default { name: 'IntroImage' };
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   animation-duration: 8s;
+  object-fit: cover;
+  width: 270px;
+  height: 270px;
 }
 </style>
