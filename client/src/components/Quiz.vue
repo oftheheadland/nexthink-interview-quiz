@@ -16,12 +16,7 @@
           year? Try not to get spooked!
         </p>
 
-        <div class="intro-image-container">
-          <img src="../assets/img/small_vamp.jpg" />
-          <img src="../assets/img/lady_vamp.jpg" />
-          <img src="../assets/img/vampire_small.png" />
-          <img src="../assets/img/bat.jpg" />
-        </div>
+        <IntroImage />
 
         <div>
           <StartButton text="Click Here..." @click="handleQuizStart" />
@@ -118,10 +113,17 @@ import QuizImage from './QuizImage.vue';
 import StartButton from './StartButton.vue';
 import BasicButton from './BasicButton.vue';
 import QuizCompletionScreen from './QuizCompletionScreen.vue';
+import IntroImage from './IntroImage.vue';
 
 export default {
   name: 'Quiz',
-  components: { QuizImage, StartButton, BasicButton, QuizCompletionScreen },
+  components: {
+    QuizImage,
+    StartButton,
+    BasicButton,
+    QuizCompletionScreen,
+    IntroImage,
+  },
   created: function() {
     this.fetchData();
   },
@@ -318,28 +320,5 @@ input[type='radio']:checked + label {
 
 .orange-text {
   color: var(--primary-white);
-}
-
-.intro-image-container {
-  position: relative;
-  height: auto;
-  max-width: 400px;
-  margin: 0 auto;
-  position: relative;
-  height: auto;
-  max-width: 400px;
-  margin: 0 auto;
-  height: 300px;
-  display: flex;
-  justify-content: center;
-}
-
-.intro-image-container img {
-  position: absolute;
-  max-height: 275px;
-  animation-name: fadeInOut;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  animation-duration: 8s;
 }
 </style>

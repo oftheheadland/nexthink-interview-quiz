@@ -7,7 +7,7 @@
     <img :src="character.character_image.url" />
 
     <div class="quote-container ">
-      <p>"{{ character.character_quote }}"</p>
+      <p class="italic">"{{ character.character_quote }}"</p>
     </div>
 
     <div class="description-container">
@@ -41,5 +41,9 @@ img {
   max-width: 600px;
   margin: auto;
   color: var(--primary-white);
+}
+
+.italic {
+  font-style: italic;
 }
 </style>
