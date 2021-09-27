@@ -18,13 +18,12 @@ Returns an array of JSON objects with information for each character.
 [
     {
         "character_description": "Dark. Mysterious. Deadly. You also sparkle. Very cool.",
-        "character_image": {…},
+        "character_image": {},
         "character_name": "Edward Cullen",
         "character_quote": "What if I'm not a hero. What if I'm the bad guy?",
         "character_source": "Twilight",
         "character_weight": "Cool"
     },
-    ...
 ]
 ```
 
@@ -46,5 +45,4 @@ Returns an array of JSON objects with the text, image, answers, and weights for 
         "d": "Clubs and parties",
         "d_weight": "Goofy"
     },
-    ...
 ```
