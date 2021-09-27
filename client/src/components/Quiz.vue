@@ -87,7 +87,7 @@
 
           <div v-if="selectedAnswer" class="next-button-container">
             <BasicButton
-              text="Next Question"
+              :text="nextButtonText"
               @click="handleNextQuestion"
             ></BasicButton>
           </div>
@@ -176,6 +176,11 @@ export default {
       });
 
       return matchedCharacter;
+    },
+    nextButtonText: function() {
+      if (this.currentQuestionIndex === this.quizQuestionsFormatted.length - 1)
+        return 'Get Results';
+      return 'Next Question';
     },
   },
   methods: {
